@@ -5,6 +5,17 @@ var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
 var HIDDEN_DETAIL_CLASS = 'hidden-detail';
 var TINY_EFFECT_CLASS = 'is-tiny';
 var ESC_KEY = 27;
+var ONE_KEY = 49;
+var TWO_KEY = 50;
+var THREE_KEY = 51;
+var FOUR_KEY = 52;
+var FIVE_KEY = 53;
+var SIX_KEY = 54;
+var SEVEN_KEY = 55;
+var EIGHT_KEY = 56;
+var NINE_KEY = 57;
+var THUMBNAIL_COUNT = 0;
+var thumbnails;
 
 function setDetails(imageUrl, titleText) {
     'use strict';
@@ -65,16 +76,64 @@ function addKeyPressHandler() {
     'use strict';
     document.body.addEventListener('keyup', function(event) {
         event.preventDefault();
-        console.log(event.keyCode);
+        //console.log(event.keyCode);
         if (event.keyCode === ESC_KEY) {
             hideDetails();
         }
+        if (event.keyCode === ONE_KEY) {
+            if (0 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[0]);
+            }
+        }
+        if (event.keyCode === TWO_KEY) {
+            if (1 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[1]);
+            }
+        }
+        if (event.keyCode === THREE_KEY) {
+            if (2 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[2]);
+            }(thumbnails[2]);
+        }
+        if (event.keyCode === FOUR_KEY) {
+            if (3 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[3]);
+            }(thumbnails[3]);
+        }
+        if (event.keyCode === FIVE_KEY) {
+            if (4 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[4]);
+            }(thumbnails[4]);
+        }
+        if (event.keyCode === SIX_KEY) {
+            if (5 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[5]);
+            }
+        }
+        if (event.keyCode === SEVEN_KEY) {
+            if (6 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[6]);
+            }
+        }
+        if (event.keyCode === EIGHT_KEY) {
+            if (7 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[7]);
+            }
+        }
+        if (event.keyCode === NINE_KEY) {
+            if (8 < THUMBNAIL_COUNT) {
+                setDetailsFromThumb(thumbnails[8]);
+            }
+        }
+
     });
 }
 
 function initializeEvents() {
     'use strict';
-    var thumbnails = getThumbnailsArray();
+    thumbnails = getThumbnailsArray();
+    THUMBNAIL_COUNT = thumbnails.length;
+    //console.log(THUMBNAIL_COUNT)
     thumbnails.forEach(addThumbClickHandler);
     addKeyPressHandler();
 }
